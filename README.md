@@ -35,7 +35,7 @@ Or,
 
 The below examples are also located in the [example workbook](/ExampleWorkbook.xlsm).
 
-## Initial Setup
+## Initial Setup, Printing All Files/Folders
 
 ```VBA
 Sub CreateNewDirectoryManager()
