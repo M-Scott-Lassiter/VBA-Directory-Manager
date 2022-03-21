@@ -1,9 +1,15 @@
 # Excel VBA Directory Manager
-Parse all the files and folders in a specified directory without using FileSystemObject or setting special references. Perfect for integrating into projects you will distribute to the lay person without worrying if they have set their references correctly in the VBA editor.
+Easily check whether files or folders exist, and parse all the files and folders in a directory.
+
+DirectoryManager runs on all macro-enabled Microsoft Office products and uses a VBA Class script only without using FileSystemObject or setting special references. Therefore, it is perfect for integrating into projects you will distribute to a lay person without worrying if they have set their references correctly in the VBA editor.
+
+This Class does not provide direct support for moving, copying, or deleting files, but accomplishing these tasks is straight forward using built in VBA methods.
+
 
 ## Requirements
 - Microsoft Office 2007 or newer (Not tested for earlier versions)
 - A macro enabled file
+
 
 ## Getting Started
 A single Class file contains all functionality. To use it in your project, use one of the following methods to add them in the IDE:
@@ -29,8 +35,8 @@ Or,
 
 
 # Example Use
-
 DirectoryManager is simple and fast to set up. The below examples will walk you through common use. They are also located in the [example workbook](/ExampleWorkbook.xlsm).
+
 
 ## Initial Setup, List All Files and Folders in a Custom Directory
 
@@ -120,8 +126,8 @@ End Sub
 ```
 Changing `OmittedPrefix` at any time will cause the DirectoryManager to re-parse the file or folder set at the current `Path`.
 
-## Check if a File or Folder Exists
 
+## Check if a File or Folder Exists
 The DirectoryManager can tell you if a file or folder at the specified `Path` exists.
 
 ```VBA
@@ -149,8 +155,8 @@ Sub CheckIfFileOrFolderExists()
 End Sub
 ```
 
-## Print a List of All Folders and Files
 
+## Print a List of All Folders and Files
 Using a helper method, we can recursively iterate through every file and folder in the DirectoryManager. This example prints the results to the Immediate Window.
 
 ```VBA
@@ -234,15 +240,16 @@ End Sub
 
 
 # Contributing and Outlook
-
 I am not actively pursuing additional development. This Class resource has all intended functionality in version 1.0. I consider it feature complete, but will continue to provide bug support.
 
 That said, I will in no way turn away additional contributions or expansions if beneficial or needed in the future.
 
 All are welcome to open an issue or feature request.
 
+
 # License
 Distributed under the [MIT License](./LICENSE), copyright 2022.
+
 
 # Contact
 Reach me on [LinkedIn](https://www.linkedin.com/in/mscottlassiter/) or [Twitter](https://twitter.com/MScottLassiter).
