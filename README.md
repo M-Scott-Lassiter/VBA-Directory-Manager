@@ -1,15 +1,12 @@
-# Excel-VBA-Directory-Manager
-Uses a single Class to parse all the files and folders in a specified directory without using FileSystemObject or setting special references. Perfect for integrating into projects you can distribute to the lay person without worrying if they have set their references correctly in the VBA editor.
+# Excel VBA Directory Manager
+Parse all the files and folders in a specified directory without using FileSystemObject or setting special references. Perfect for integrating into projects you will distribute to the lay person without worrying if they have set their references correctly in the VBA editor.
 
 ## Requirements
 - Microsoft Office 2007 or newer (Not tested for earlier versions)
 - A macro enabled file
-- Knowledge of how to [add a Class module](https://analystcave.com/vba-vba-class-tutorial/) to your project 
 
 ## Getting Started
 A single Class file contains all functionality. To use it in your project, use one of the following methods to add them in the IDE:
-
-To use it in your project, then use one of the following methods to add them in the IDE.
 
 - Save the [source code module](/DirectoryManager.cls) to your machine, then import it into the Project using the IDE
 
@@ -33,9 +30,14 @@ Or,
 
 # Example Use
 
-The below examples are also located in the [example workbook](/ExampleWorkbook.xlsm).
+DirectoryManager is simple and fast to set up. The below examples will walk you through common use. They are also located in the [example workbook](/ExampleWorkbook.xlsm).
 
 ## Initial Setup
+
+The first step is to declare the variable and initialize it with a path. The path can be to either a folder or a file.
+
+If set to a folder, DirectoryManager then parses all the files, folders, and subfolders in that location. These are stored and accessed in Collections.
+
 
 ```VBA
 Sub CreateNewDirectoryManager()
@@ -78,6 +80,8 @@ End Sub
 ## Use Omitted Characters to Exclude Files or Folders
 Setting the `OmittedPrefix` property to a non-empty string will cause the DirectoryManager to exclude any file or folder that starts with that string.
 
+This is useful if you want to use DirectoryManager to exclude specific folders or files from your project.
+
 ```VBA
 Sub SetOmmitedPrefix()
 
@@ -114,11 +118,11 @@ Sub SetOmmitedPrefix()
 
 End Sub
 ```
-Changing `OmittedPrefix` will cause the DirectoryManager to re-parse the file or folder set at the current `Path`.
+Changing `OmittedPrefix` at any time will cause the DirectoryManager to re-parse the file or folder set at the current `Path`.
 
 ## Check if a File or Folder Exists
 
-The DirectoryManager can easily tell you if a file or folder at the specified `Path` exists.
+The DirectoryManager can tell you if a file or folder at the specified `Path` exists.
 
 ```VBA
 Sub CheckIfFileOrFolderExists()
@@ -145,10 +149,16 @@ Sub CheckIfFileOrFolderExists()
 End Sub
 ```
 
+# Contributing and Outlook
+
+I am not actively pursuing additional development. This Class resource has all intended functionality in version 1.0. I consider it feature complete, but will continue to provide bug support.
+
+That said, I will in no way turn away additional contributions or expansions if beneficial or needed in the future.
+
+All are welcome to open an issue or feature request.
 
 # License
-Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
-
+Distributed under the [MIT License](./LICENSE), copyright 2022.
 
 # Contact
 Reach me on [LinkedIn](https://www.linkedin.com/in/mscottlassiter/) or [Twitter](https://twitter.com/MScottLassiter).
