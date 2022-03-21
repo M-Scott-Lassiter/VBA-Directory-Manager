@@ -1,4 +1,4 @@
-# Excel VBA Directory Manager
+# VBA Directory Manager
 Easily check whether files or folders exist, and parse all the files and folders in a directory.
 
 DirectoryManager runs on all macro-enabled Microsoft Office products and uses a VBA Class script only without using FileSystemObject or setting special references. Therefore, it is perfect for integrating into projects you will distribute to a lay person without worrying if they have set their references correctly in the VBA editor.
