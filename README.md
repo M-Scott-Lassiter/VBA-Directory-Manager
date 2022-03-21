@@ -32,7 +32,7 @@ Or,
 
 DirectoryManager is simple and fast to set up. The below examples will walk you through common use. They are also located in the [example workbook](/ExampleWorkbook.xlsm).
 
-## Initial Setup, Printing All Files/Folders
+## Initial Setup, List All Files and Folders in a Custom Directory
 
 The first step is to declare the variable and initialize it with a path. The path can be to either a folder or a file.
 
@@ -148,6 +148,90 @@ Sub CheckIfFileOrFolderExists()
 
 End Sub
 ```
+
+## Print a List of All Folders and Files
+
+Using a helper method, we can recursively iterate through every file and folder in the DirectoryManager. This example prints the results to the Immediate Window.
+
+```VBA
+Sub PrintFilesAndFolders(Directory As DirectoryManager, Optional indent As String)
+'Helper method
+
+    Dim folder As DirectoryManager
+    Dim file As DirectoryManager
+    Dim newIndent As String
+    
+    For Each folder In Directory.Folders
+        Debug.Print indent & "+ " & folder.Name
+        newIndent = indent & "  "
+        PrintFilesAndFolders folder, newIndent
+    Next folder
+    
+    For Each file In Directory.Files
+        Debug.Print indent & "- " & file.Name
+    Next file
+    
+End Sub
+
+Sub LoopThroughAllFilesAndFolders()
+
+    Dim dm As DirectoryManager
+    
+    Set dm = New DirectoryManager
+    dm.Path = ThisWorkbook.Path & "\Sample Data Set"
+    
+    PrintFilesAndFolders dm
+    
+    'Output from above:
+    
+'    + _My Personal Documents
+'      - Document 1.txt
+'      - Document 2.txt
+'      - Document 3.txt
+'    + Contacts
+'      + _Emergency Contacts
+'        - Father.txt
+'        - Mother.txt
+'        - Sibling.txt
+'        - Spouse.txt
+'      + _Personal Contacts
+'        - Contact 1.txt
+'        - Contact 2.txt
+'        - Contact 3.txt
+'      + Business Contacts
+'        - _Contact 1A.txt
+'        - _Contact 2A.txt
+'        - Contact 1.txt
+'        - Contact 2.txt
+'        - Contact 3.txt
+'        - Contact 4.txt
+'        - Contact 5.txt
+'        - Contact 6.txt
+'        - Contact 7.txt
+'      - _My Old Phone.txt
+'      - My Phone.txt
+'    + Documents
+'      - Document 1.txt
+'      - Document 2.txt
+'      - Document 3.txt
+'      - Document 4.txt
+'      - Document 5.txt
+'      - Document 6.txt
+'    + My Publications
+'      - Publication 1.txt
+'      - Publication 2.txt
+'      - Publication 3.txt
+'      - Publication 4.txt
+'      - Publication 5.txt
+'    + Pictures
+'    - _Sample File A.txt
+'    - Sample File 1.txt
+'    - Sample File 2.txt
+'    - Sample File 3.txt
+    
+End Sub
+```
+
 
 # Contributing and Outlook
 
