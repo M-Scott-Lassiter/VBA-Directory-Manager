@@ -8,7 +8,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'Version 1.0.0                                                                  '
+'Version 1.0.1                                                                  '
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 'MIT License                                                                    '
 '                                                                               '
@@ -135,7 +135,7 @@ Private Sub FindFilesAndFolders()
         
         'Ignore the special folders '.' and '..'
         If RefFolders <> "." And RefFolders <> ".." Then
-            If Left(RefFolders, Len(OmittedPrefixValue)) <> OmittedPrefixValue Or OmittedPrefixValue = "" Then  'Ignore the omitted prefixes, if specified
+            If UCase(Left(RefFolders, Len(OmittedPrefixValue))) <> UCase(OmittedPrefixValue) Or OmittedPrefixValue = "" Then   'Ignore the omitted prefixes, if specified
                 If (GetAttr(FolderPath & RefFolders) And vbDirectory) = vbDirectory Then
                     FoundFoldersList.Add RefFolders, RefFolders
                 Else
@@ -214,3 +214,4 @@ Private Function FormatFilePath(InputPath As String) As String
     End If
     
 End Function
+

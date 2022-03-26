@@ -29,7 +29,7 @@ Or,
 | Files         	| Collection (Read Only) 	| Returns an Excel Collection object. Each item inside contains another instance of DirectoryManager for the applicable file.                                                                                                                                                                      	|
 | Folders       	| Collection (Read Only) 	| Returns an Excel Collection object. Each item inside contains another instance of DirectoryManager for the applicable folder.                                                                                                                                                                    	|
 | Name          	| String (Read Only)     	| Returns the name of the file or folder.                                                                                                                                                                                                                                                          	|
-| OmittedPrefix 	| String (Read/Write)    	| Defaults to an empty string. If set, this will omit all files and folders that start with the `OmittedPrefix` string during the file parsing process. Changing this value will cause the `DirectoryManager` instance to recalculate. This value passes down to all files and folders beneath it. 	|
+| OmittedPrefix 	| String (Read/Write)    	| Defaults to an empty string. If set, this will omit all files and folders that start with the `OmittedPrefix` string during the file parsing process. Changing this value will cause the `DirectoryManager` instance to recalculate. This value passes down to all files and folders beneath it. This variable is not case sensitive.	|
 | Path          	| String (Read/Write)    	| Returns the full system path of the file or folder.                                                                                                                                                                                                                                              	|
 
 
@@ -84,7 +84,7 @@ End Sub
 ```
 
 ## Use Omitted Characters to Exclude Files or Folders
-Setting the `OmittedPrefix` property to a non-empty string will cause the DirectoryManager to exclude any file or folder that starts with that string.
+Setting the `OmittedPrefix` property to a non-empty string will cause the DirectoryManager to exclude any file or folder that starts with that string. The value is not case sensitive.
 
 This is useful if you want to use DirectoryManager to exclude specific folders or files from your project.
 
