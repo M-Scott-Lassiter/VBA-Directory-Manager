@@ -8,7 +8,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-'Version 1.0.1                                                                  '
+'Version 1.0.2                                                                  '
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 'MIT License                                                                    '
 '                                                                               '
@@ -155,10 +155,16 @@ Private Sub FindSubFilesAndFolders()
 '   and repeats the process.
     Dim item As Variant
     Dim newFolder As DirectoryManager
+    Dim originalStatusBarDisplay As Boolean
     
-    
+    originalStatusBarDisplay = Application.DisplayStatusBar
+    Application.DisplayStatusBar = True
     
     For Each item In FoundFoldersList
+        'For large file/folder counts, Excel appears to freeze. This gives feedback that it's still working.
+        Application.StatusBar = "Reading from folder '" & item & "'"
+        DoEvents
+        
         Set newFolder = New DirectoryManager
         newFolder.OmittedPrefix = OmittedPrefixValue
         newFolder.Path = FolderPath & item
@@ -173,6 +179,8 @@ Private Sub FindSubFilesAndFolders()
 
         InsertCollectionValueAlphabetically FoundFiles, newFolder, newFolder.Name
     Next item
+    
+    Application.DisplayStatusBar = originalStatusBarDisplay
     
 End Sub
 
